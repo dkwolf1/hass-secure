@@ -1,0 +1,21 @@
+{
+  "name": "Security Suite",
+  "version": "1.0",
+  "slug": "security_suite",
+  "description": "Scan je Home Assistant-systeem op beveiligingsproblemen.",
+  "arch": ["amd64", "aarch64"],
+  "startup": "application",
+  "boot": "auto",
+  "hassio_api": true,
+  "hassio_role": "admin",
+  "homeassistant_api": true,
+  "webui": "http://[HOST]:[PORT:8123]",
+  "ports": {
+    "8123/tcp": 8123
+  },
+  "host_network": true,
+  "privileged": ["NET_ADMIN", "SYS_ADMIN"],
+  "map": ["config:rw", "ssl", "addons:rw", "backup", "share"],
+  "options": {},
+  "schema": {}
+}
