@@ -1,1 +1,1 @@
-Flask==<desired-version>
+Flask==2.3.2
