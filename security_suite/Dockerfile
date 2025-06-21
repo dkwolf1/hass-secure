@@ -3,21 +3,12 @@ FROM $BUILD_FROM
 
 ENV LANG C.UTF-8
 
-# Install dependencies
-RUN apk add --no-cache \
-    nmap \
-    curl \
-    openssl \
-    mosquitto-clients \
-    bash \
-    jq \
-    python3 \
-    py3-pip \
-    git \
-    && pip3 install flask
+RUN apk add --no-cache python3 py3-pip bash && pip3 install flask
 
-# Copy files
 COPY run.sh /run.sh
-RUN chmod a+x /run.sh
+COPY webserver.py /webserver.py
+COPY templates/ /templates/
+
+RUN chmod +x /run.sh
 
 CMD [ "/run.sh" ]
