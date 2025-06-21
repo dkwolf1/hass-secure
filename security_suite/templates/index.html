@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <title>Security Suite</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f7f7f7; }
+        h1 { color: #333; }
+        pre { background: #eee; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Security Suite Configuratie</h1>
+
+    {% if config.error %}
+        <p><strong>Fout bij laden van configuratie:</strong> {{ config.error }}</p>
+    {% else %}
+        <h2>Cloudflare</h2>
+        <ul>
+            <li>Token: {{ config.cloudflare_token }}</li>
+            <li>Zone ID: {{ config.cloudflare_zone_id }}</li>
+        </ul>
+
+        <h2>MQTT</h2>
+        <ul>
+            <li>Host: {{ config.mqtt_host }}</li>
+            <li>Poort: {{ config.mqtt_port }}</li>
+            <li>Gebruiker: {{ config.mqtt_user }}</li>
+        </ul>
+    {% endif %}
+</body>
+</html>
