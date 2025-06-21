@@ -1,21 +1,35 @@
 {
   "name": "Security Suite",
-  "version": "1.0",
+  "version": "1.0.0",
   "slug": "security_suite",
-  "description": "Scan je Home Assistant-systeem op beveiligingsproblemen.",
+  "description": "Voer beveiligingscontroles uit op je Home Assistant installatie.",
   "arch": ["amd64", "aarch64"],
   "startup": "application",
   "boot": "auto",
+  "ingress": true,
+  "ingress_port": 8080,
+  "panel_icon": "mdi:shield-lock",
+  "panel_title": "Security Suite",
+  "homeassistant_api": true,
   "hassio_api": true,
   "hassio_role": "admin",
-  "homeassistant_api": true,
-  "webui": "http://[HOST]:[PORT:8123]",
-  "ports": {
-    "8123/tcp": 8123
-  },
   "host_network": true,
-  "privileged": ["NET_ADMIN", "SYS_ADMIN"],
-  "map": ["config:rw", "ssl", "addons:rw", "backup", "share"],
-  "options": {},
-  "schema": {}
+  "map": ["config:rw", "ssl", "share"],
+  "privileged": ["NET_ADMIN"],
+  "options": {
+    "cloudflare_token": "",
+    "cloudflare_zone_id": "",
+    "mqtt_host": "localhost",
+    "mqtt_port": 1883,
+    "mqtt_user": "",
+    "mqtt_password": ""
+  },
+  "schema": {
+    "cloudflare_token": "str",
+    "cloudflare_zone_id": "str",
+    "mqtt_host": "str",
+    "mqtt_port": "int",
+    "mqtt_user": "str",
+    "mqtt_password": "str"
+  }
 }
