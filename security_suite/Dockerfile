@@ -1,19 +1,12 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
+FROM python:3.11-alpine
 
 ENV LANG C.UTF-8
 
-# Installeer OS-pakketten
-RUN apk add --no-cache \
-    python3 \
-    py3-pip \
-    bash
-
-# Zorg dat pip3 werkt
-RUN python3 -m ensurepip && pip3 install --no-cache-dir --upgrade pip setuptools wheel
+# Install only required packages
+RUN apk add --no-cache bash
 
 # Installeer Flask
-RUN pip3 install flask
+RUN pip install flask
 
 # Bestanden toevoegen
 COPY run.sh /run.sh
