@@ -9,11 +9,14 @@ RUN apk add --no-cache bash
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
+# Set workdir
+WORKDIR /app
+
 # Bestanden toevoegen
-COPY run.sh /run.sh
-COPY webserver.py /webserver.py
-COPY templates/ /templates/
+COPY run.sh /app/run.sh
+COPY webserver.py /app/webserver.py
+COPY templates/ /app/templates/
 
-RUN chmod +x /run.sh
+RUN chmod +x /app/run.sh
 
-CMD [ "/run.sh" ]
+CMD [ "/app/run.sh" ]
