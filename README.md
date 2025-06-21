@@ -17,3 +17,9 @@ This add-on scans your Home Assistant server and ecosystem for security vulnerab
 🌐 Web-based interface with multilingual support (🇬🇧 English / 🇳🇱 Dutch)
 Use the language selector at the top of the dashboard to switch translations
 📝 Per-module logs + downloadable full report
+
+## Build Process
+
+The add-on's Dockerfile now uses the lightweight `python:3.11-alpine` image.
+Python and `pip` are included, so only `bash` needs to be installed. Building
+is as simple as running a standard `docker build` command.
