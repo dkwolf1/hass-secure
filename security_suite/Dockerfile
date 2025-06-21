@@ -5,8 +5,9 @@ ENV LANG C.UTF-8
 # Install only required packages
 RUN apk add --no-cache bash
 
-# Installeer Flask
-RUN pip install flask
+# Installeer afhankelijkheden
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 # Bestanden toevoegen
 COPY run.sh /run.sh
