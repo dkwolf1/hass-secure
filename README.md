@@ -22,4 +22,10 @@ Use the language selector at the top of the dashboard to switch translations
 
 The add-on's Dockerfile now uses the lightweight `python:3.11-alpine` image.
 Python and `pip` are included, so only `bash` needs to be installed. Building
-is as simple as running a standard `docker build` command.
+is as simple as running the command:
+
+docker build -t hass-secure .
+docker run -p 8080:8080 hass-secure
+
+The container exposes port `8080`. Once running, open
+`http://localhost:8080` in your browser to reach the web UI.
